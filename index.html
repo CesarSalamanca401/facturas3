@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Factura2</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+        }
+
         .contenedor {
             border: 1px solid black;
             width: 50%;
             display: flex;
             flex-direction: column;
-            box-shadow: black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin: 20px 0;
         }
 
         .logo-container {
@@ -102,43 +114,76 @@
             text-align: right;
         }
 
-        .contenedor3,
-        .contenedor4,
-        .contenedor5,
-        .contenedor6,
-        .contenedor7 {
-            padding: 20px 0;
+        .table-scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .invoice-table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .table-header,
+        .table-row {
+            display: table-row;
+        }
+
+        .table-header {
+            background-color: #e6ecec;
+            font-weight: bold;
             color: black;
             font-size: 16px;
         }
 
-        .contenedor3 {
-            background-color: #e6ecec;
-            font-weight: bold;
-
-        }
-
-        .introduccion3,
-        .introduccion4,
-        .introduccion5,
-        .introduccion6,
-        .introduccion7 {
-            display: flex;
-            align-items: center;
-            margin: 0 40px;
-        }
-
-        .introduccion4,
-        .introduccion5,
-        .introduccion6 {
+        .table-cell {
+            display: table-cell;
+            padding: 20px 0;
+            vertical-align: middle;
             border-bottom: 1px solid black;
-            padding-bottom: 20px;
-            margin-bottom: 0px;
         }
 
-        .contenedor7 .introduccion7 {
-            padding-bottom: 0;
-            margin-bottom: 0;
+        .table-row:last-of-type .table-cell {
+            border-bottom: none;
+        }
+
+        .table-header .table-cell {
+            padding: 20px 40px;
+        }
+
+        .table-row .table-cell {
+            padding: 20px 40px;
+        }
+
+        .col-sl {
+            width: 5%;
+            text-align: left;
+        }
+
+        .col-item {
+            width: 50%;
+            text-align: left;
+        }
+
+        .col-price {
+            width: 15%;
+            text-align: right;
+        }
+
+        .col-qty {
+            width: 10%;
+            text-align: right;
+        }
+
+        .col-total {
+            width: 20%;
+            text-align: right;
+        }
+
+        .col-item div {
+            white-space: normal;
         }
 
         .espacio-con-lineas {
@@ -147,74 +192,6 @@
             border-bottom: 1px solid black;
             margin: 20px 40px;
             box-sizing: border-box;
-        }
-
-        .contenedor3 .col-sl {
-            width: 5%;
-        }
-
-        .contenedor3 .col-item {
-            width: 50%;
-        }
-
-        .contenedor3 .col-price {
-            width: 15%;
-            text-align: right;
-        }
-
-        .contenedor3 .col-qty {
-            width: 10%;
-            text-align: right;
-        }
-
-        .contenedor3 .col-total {
-            width: 20%;
-            text-align: right;
-        }
-
-        .number,
-        .number2,
-        .number3,
-        .number4 {
-            width: 5%;
-        }
-
-        .col-LoremIpsum,
-        .col-Pellentesque,
-        .col-Interdum,
-        .col-Vivamus {
-            width: 50%;
-        }
-
-        .price2,
-        .price3,
-        .price4,
-        .price5 {
-            width: 15%;
-            text-align: right;
-        }
-
-        .Qty-1,
-        .Qty-2,
-        .Qty-3,
-        .Qty-4 {
-            width: 10%;
-            text-align: right;
-        }
-
-        .total1,
-        .total2,
-        .total3,
-        .total4 {
-            width: 20%;
-            text-align: right;
-        }
-
-        .introduccion4>div,
-        .introduccion5>div,
-        .introduccion6>div,
-        .introduccion7>div {
-            font-weight: normal;
         }
 
         .seccion-final {
@@ -316,11 +293,6 @@
             margin-top: auto;
         }
 
-        .scroll {
-            overflow-x: scroll;
-            -webkit-overflow-scrolling: touch;
-        }
-
         @media (max-width: 1160px) {
             .contenedor {
                 width: 70%;
@@ -361,216 +333,99 @@
             .text2 p {
                 margin: 20px;
             }
-
-            .contenedor3 .col-sl {
-                width: 10%;
-            }
         }
 
         @media (max-width: 400px) {
-            .contenedor3 .col-sl {
-                width: none;
-            }
-        }
-
-        @media (max-width: 400px) {
-
-            @media (max-width: 400px) {
-
-                .contenedor2 {
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 20px;
-                }
-
-                .introduccion {
-                    text-align: center;
-                    margin-bottom: 20px;
-                }
-
-                .introduccion2 {
-                    text-align: center;
-                    margin-top: 0;
-                }
-
-                .introduccion2 p {
-                    display: block;
-                    margin-bottom: 5px;
-                }
-
-                .introduccion2 span {
-                    display: inline-block;
-                    min-width: auto;
-                    text-align: center;
-                    margin-right: 0;
-                }
-
-                .introduccion2 span.value {
-                    text-align: center;
-                }
+            .contenedor2 {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
             }
 
-            @media (max-width: 400px) {
-
-                .seccion-final {
-                    flex-direction: column;
-                    padding: 20px;
-                }
-
-                .info-izquierda {
-                    width: 100%;
-                    order: 2;
-                }
-
-                .info-derecha {
-                    width: 100%;
-                    order: 1;
-                    align-items: center;
-                    margin-bottom: 20px;
-                }
-
-                .totales-tabla {
-                    width: 100%;
-                    margin-bottom: 20px;
-                }
-
-                .firma {
-                    width: auto;
-                    border-top: none;
-                }
-
-                .terms-conditions {
-                    margin-top: 20px;
-                }
+            .introduccion {
+                text-align: center;
+                margin-bottom: 20px;
             }
 
-            @media (max-width: 400px) {
-
-                .introduccion4,
-                .introduccion5,
-                .introduccion6,
-                .introduccion7 {
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    gap: 8px;
-                }
-
-                .number,
-                .number2,
-                .number3,
-                .number4 {
-                    width: 8%;
-                }
-
-                .col-LoremIpsum,
-                .col-Pellentesque,
-                .col-Interdum,
-                .col-Vivamus {
-                    width: 42%;
-                }
-
-                .price2,
-                .price3,
-                .price4,
-                .price5 {
-                    width: 15%;
-                    text-align: right;
-                }
-
-                .Qty-1,
-                .Qty-2,
-                .Qty-3,
-                .Qty-4 {
-                    width: 10%;
-                    text-align: right;
-                }
-
-                .total1,
-                .total2,
-                .total3,
-                .total4 {
-                    width: 20%;
-                    text-align: right;
-                }
+            .introduccion2 {
+                text-align: center;
+                margin-top: 0;
             }
 
-            @media (max-width: 400px) {
-
-                .introduccion4,
-                .introduccion5,
-                .introduccion6,
-                .introduccion7 {
-                    display: grid;
-                    grid-template-columns: 8% 50% 20% 10% 12%;
-                    align-items: start;
-                    gap: 5px;
-                    padding: 8px 0;
-                }
-
-                .introduccion4>div,
-                .introduccion5>div,
-                .introduccion6>div,
-                .introduccion7>div {
-                    font-size: 14px;
-                    line-height: 1.3;
-                }
-
-                .contenedor4,
-                .contenedor5,
-                .contenedor6,
-                .contenedor7 {
-                    border-bottom: 1px solid #ccc;
-                    padding-bottom: 8px;
-                    margin-bottom: 8px;
-                }
-
-                .price2,
-                .price3,
-                .price4,
-                .price5,
-                .Qty-1,
-                .Qty-2,
-                .Qty-3,
-                .Qty-4,
-                .total1,
-                .total2,
-                .total3,
-                .total4 {
-                    text-align: right;
-                }
-            }
-        }
-
-        @media (max-width: 350px) {
-            .introduccion3 {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                justify-content: flex-start;
+            .introduccion2 p {
+                display: block;
+                margin-bottom: 5px;
             }
 
-            .contenedor3 .col-sl {
+            .introduccion2 span {
+                display: inline-block;
+                min-width: auto;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .introduccion2 span.value {
+                text-align: center;
+            }
+
+            .seccion-final {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .info-izquierda {
+                width: 100%;
+                order: 2;
+            }
+
+            .info-derecha {
+                width: 100%;
+                order: 1;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .totales-tabla {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .firma {
+                width: auto;
+                border-top: none;
+            }
+
+            .terms-conditions {
+                margin-top: 20px;
+            }
+
+            .table-cell {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .table-header .table-cell {
+                padding: 15px;
+            }
+
+            .col-sl {
                 min-width: 30px;
-                white-space: nowrap;
             }
 
-            .contenedor3 .col-item {
+            .col-item {
                 min-width: 120px;
-                white-space: nowrap;
             }
 
-            .contenedor3 .col-price {
+            .col-price {
                 min-width: 60px;
-                white-space: nowrap;
             }
 
-            .contenedor3 .col-qty {
+            .col-qty {
                 min-width: 40px;
-                white-space: nowrap;
             }
 
-            .contenedor3 .col-total {
+            .col-total {
                 min-width: 70px;
-                white-space: nowrap;
             }
         }
     </style>
@@ -596,50 +451,47 @@
                 <p><span>Date:</span><span class="value">01 / 02 / 2020</span></p>
             </div>
         </div>
-        <div class="contenedor3">
-            <div class="introduccion3">
-                <div class="col-sl">SL.</div>
-                <div class="col-item">Item Description</div>
-                <div class="col-price">Price</div>
-                <div class="col-qty">Qty</div>
-                <div class="col-total">Total</div>
-            </div>
-        </div>
-        <div class="scroll">
-            <div class="contenedor4">
-                <div class="introduccion4">
-                    <div class="number">1</div>
-                    <div class="col-LoremIpsum">Lorem Ipsum Dolor</div>
-                    <div class="price2">$50.00</div>
-                    <div class="Qty-1">1</div>
-                    <div class="total1">$50.00</div>
+
+        <div class="table-scroll-container">
+            <div class="invoice-table">
+                <div class="table-header">
+                    <div class="table-cell col-sl">SL.</div>
+                    <div class="table-cell col-item">Item Description</div>
+                    <div class="table-cell col-price">Price</div>
+                    <div class="table-cell col-qty">Qty</div>
+                    <div class="table-cell col-total">Total</div>
                 </div>
-            </div>
-            <div class="contenedor5">
-                <div class="introduccion5">
-                    <div class="number2">2</div>
-                    <div class="col-Pellentesque">Pellentesque id neque liguia</div>
-                    <div class="price3">$20.00</div>
-                    <div class="Qty-2">3</div>
-                    <div class="total2">$60.00</div>
+
+                <div class="table-row">
+                    <div class="table-cell col-sl">1</div>
+                    <div class="table-cell col-item">Lorem Ipsum Dolor</div>
+                    <div class="table-cell col-price">$50.00</div>
+                    <div class="table-cell col-qty">1</div>
+                    <div class="table-cell col-total">$50.00</div>
                 </div>
-            </div>
-            <div class="contenedor6">
-                <div class="introduccion6">
-                    <div class="number3">3</div>
-                    <div class="col-Interdum">Interdum et malesuada fames</div>
-                    <div class="price4">$10.00</div>
-                    <div class="Qty-3">2</div>
-                    <div class="total3">$20.00</div>
+
+                <div class="table-row">
+                    <div class="table-cell col-sl">2</div>
+                    <div class="table-cell col-item">Pellentesque id neque liguia</div>
+                    <div class="table-cell col-price">$20.00</div>
+                    <div class="table-cell col-qty">3</div>
+                    <div class="table-cell col-total">$60.00</div>
                 </div>
-            </div>
-            <div class="contenedor7">
-                <div class="introduccion7">
-                    <div class="number4">4</div>
-                    <div class="col-Vivamus">Vivamus volutpat faucibus</div>
-                    <div class="price5">$90.00</div>
-                    <div class="Qty-4">1</div>
-                    <div class="total4">$90.00</div>
+
+                <div class="table-row">
+                    <div class="table-cell col-sl">3</div>
+                    <div class="table-cell col-item">Interdum et malesuada fames</div>
+                    <div class="table-cell col-price">$10.00</div>
+                    <div class="table-cell col-qty">2</div>
+                    <div class="table-cell col-total">$20.00</div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell col-sl">4</div>
+                    <div class="table-cell col-item">Vivamus volutpat faucibus</div>
+                    <div class="table-cell col-price">$90.00</div>
+                    <div class="table-cell col-qty">1</div>
+                    <div class="table-cell col-total">$90.00</div>
                 </div>
             </div>
         </div>
