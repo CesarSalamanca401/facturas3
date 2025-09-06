@@ -539,9 +539,39 @@
                     text-align: right;
                 }
             }
+        }
 
+        @media (max-width: 350px) {
+            .introduccion3 {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
 
+            .contenedor3 .col-sl {
+                min-width: 30px;
+                white-space: nowrap;
+            }
 
+            .contenedor3 .col-item {
+                min-width: 120px;
+                white-space: nowrap;
+            }
+
+            .contenedor3 .col-price {
+                min-width: 60px;
+                white-space: nowrap;
+            }
+
+            .contenedor3 .col-qty {
+                min-width: 40px;
+                white-space: nowrap;
+            }
+
+            .contenedor3 .col-total {
+                min-width: 70px;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
